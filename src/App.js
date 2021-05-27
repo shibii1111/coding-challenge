@@ -16,7 +16,8 @@ function App() {
     if (!buzzWordSearched){
       alert("Nice try!")
     }
-    else{      
+    else{     
+      /* Feed the search with the buzz words*/ 
       Axios.get(endPointURL + "?buzz_word="+buzzWordSearched).then(
         (response) => {
           if (response.data[0] !== undefined){
