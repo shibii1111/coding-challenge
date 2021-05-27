@@ -8,24 +8,24 @@ import { useState } from 'react';
 function App() {
   const [ninjaName, setNinjaName] = useState([])
   const buzzWordsList = []
-  const {API_URL} = process.env
-  const {ITCH_URL} = process.env
+  const {REACT_APP_API_URL} = process.env
+  const {REACT_APP_ITCH_URL} = process.env
 
   /* Connects the API, uses the current value of the Autocomplet and feeds it to the API URL to retrieve the proper result */
   const getNinja = () => {
     let buzzWordSearched = document.getElementById('buzzSearch').value;
     if (!buzzWordSearched){
       // alert("Nice try!")
-      alert(API_URL)
+      alert(REACT_APP_API_URL)
     }
     else{     
       /* Feed the search with the buzz words*/ 
-      Axios.get({API_URL} + "?buzz_word="+buzzWordSearched).then(
+      Axios.get({REACT_APP_API_URL} + "?buzz_word="+buzzWordSearched).then(
         (response) => {
           if (response.data[0] !== undefined){
             if(response.data[0].buzz_word === "Konami"){
               alert("The password is : konamicode")
-              window.open(ITCH_URL);
+              window.open(REACT_APP_ITCH_URL);
               setNinjaName("");
               document.getElementById('buzzSearch').value = "";
             }
