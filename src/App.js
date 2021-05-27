@@ -8,7 +8,8 @@ import { useState } from 'react';
 function App() {
   const [ninjaName, setNinjaName] = useState([])
   const buzzWordsList = []
-  const endPointURL = process.env.API_URL
+  const {API_URL} = process.env
+  const {ITCH_URL} = process.env
 
   /* Connects the API, uses the current value of the Autocomplet and feeds it to the API URL to retrieve the proper result */
   const getNinja = () => {
@@ -18,12 +19,12 @@ function App() {
     }
     else{     
       /* Feed the search with the buzz words*/ 
-      Axios.get(endPointURL + "?buzz_word="+buzzWordSearched).then(
+      Axios.get(API_URL + "?buzz_word="+buzzWordSearched).then(
         (response) => {
           if (response.data[0] !== undefined){
             if(response.data[0].buzz_word === "Konami"){
               alert("The password is : konamicode")
-              window.open(process.env.ITCH_URL);
+              window.open(ITCH_URL);
               setNinjaName("");
               document.getElementById('buzzSearch').value = "";
             }
@@ -44,7 +45,7 @@ function App() {
   
   /* Retrieves the buzz words from ther API and append them in an array to feed the Autocomplete aka the search */
   const getBuzzWords = () => {
-    Axios.get(endPointURL).then(
+    Axios.get(API_URL).then(
       (response) => {
         for (const i in response.data){
           buzzWordsList.push(response.data[i].buzz_word)
