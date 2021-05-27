@@ -46,7 +46,7 @@ function App() {
   
   /* Retrieves the buzz words from ther API and append them in an array to feed the Autocomplete aka the search */
   const getBuzzWords = () => {
-    Axios.get(API_URL).then(
+    Axios.get(REACT_APP_API_URL).then(
       (response) => {
         for (const i in response.data){
           buzzWordsList.push(response.data[i].buzz_word)
