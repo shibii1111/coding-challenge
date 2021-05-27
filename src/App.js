@@ -15,11 +15,12 @@ function App() {
   const getNinja = () => {
     let buzzWordSearched = document.getElementById('buzzSearch').value;
     if (!buzzWordSearched){
-      alert("Nice try!")
+      // alert("Nice try!")
+      alert(API_URL)
     }
     else{     
       /* Feed the search with the buzz words*/ 
-      Axios.get(API_URL + "?buzz_word="+buzzWordSearched).then(
+      Axios.get({API_URL} + "?buzz_word="+buzzWordSearched).then(
         (response) => {
           if (response.data[0] !== undefined){
             if(response.data[0].buzz_word === "Konami"){
