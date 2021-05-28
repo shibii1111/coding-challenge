@@ -20,7 +20,7 @@ function App() {
     }
     else{     
       /* Feed the search with the buzz words*/ 
-      Axios.get({REACT_APP_API_URL} + "?buzz_word="+buzzWordSearched).then(
+      Axios.get(REACT_APP_API_URL + "?buzz_word="+buzzWordSearched).then(
         (response) => {
           if (response.data[0] !== undefined){
             if(response.data[0].buzz_word === "Konami"){
